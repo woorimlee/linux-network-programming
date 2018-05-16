@@ -12,7 +12,8 @@ int main(int argc, char *argv[]) {
 	int simpleSocket = 0;
 	int simplePort = 0;
 	int returnStatus = 0;
-	char buffer[256] = "";
+	int filesize = 0;
+	unsigned char * filedata;
 	struct sockaddr_in simpleServer;
 	FILE *fp;
 
@@ -51,17 +52,16 @@ int main(int argc, char *argv[]) {
 	}
 
 	fp = fopen(argv[3], "wb");
-
-	returnStatus = read(simpleSocket, buffer, sizeof(buffer));
+	    
+	returnStatus = read(simpleSocket, &filesize, sizeof(filesize));
 	
-	if ( returnStatus > 0 ) {
-		printf("%d: %s", returnStatus, buffer);
-	}
-	else {
-		fprintf(stderr, "Return Status = %d \n", returnStatus);
-	}
+	printf("%d: %d", returnStatus, filesize);
+	
+	filedata = (unsigned char *)malloc(filesize);
 
-	fwrite(buffer, sizeof(unsigned char), sizeof(buffer), fp);
+	read(simpleSocket, &filedata, filesize);
+
+	fwrite(filedata, sizeof(unsigned char), filesize, fp);
 	fclose(fp);
 	close(simpleSocket);
 	return 0;
