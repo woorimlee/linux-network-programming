@@ -1,4 +1,4 @@
-# net_prog_lecture
+# Linux Socket Network Programming
 
 이 Repository는 리눅스상에서 구현한 네트워크 프로그래밍에 대한 저장소입니다.
 Image_Transferring 폴더에 있는 실행 파일로 이미지를 전송 & 수신 할 수 있으며,
