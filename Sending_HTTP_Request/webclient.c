@@ -8,6 +8,8 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
+const char * REQUEST_MESSAGE[] = {"",}
+
 int main (int argc, char *argv[]) {
     int sock = 0;
     int port = 0;
@@ -44,7 +46,8 @@ int main (int argc, char *argv[]) {
 	exit(4);
     } else fprintf(stderr, "Connection success\n");
 
-    //body
+    if(send(sock, ) > 0) {
+	printf("HTTP Requust succeuss using socket\n:);
 
     close(sock);
     return 0;
