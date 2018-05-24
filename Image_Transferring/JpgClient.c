@@ -64,7 +64,8 @@ int main(int argc, char *argv[]) {
 
 	n = fwrite(filedata, sizeof(unsigned char), receive_filesize, fp);
 	printf("n : %d\n",n);
-	    
+	
+	free(filedata);	
 	fclose(fp);
 	close(simpleSocket);
 	return 0;

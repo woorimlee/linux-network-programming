@@ -111,6 +111,7 @@ int main(int argc, char *argv[]){
 		fclose(fp);
 	}
 	
+	free(filedata);
 	close(simplesocket); 
 	return 0;
 }
