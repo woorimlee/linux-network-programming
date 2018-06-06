@@ -27,10 +27,14 @@
   4. 대부분의 스레드나 process 값들 역시 사라진다.
   5. 열린 파일 목록 등도 사라지고, 프로세스 address space에 올라가 있는 것들 역시 사라진다.
 + 기존의 프로그램이 없어지기 때문에 exec() 함수 호출 후 return 할 위치가 없어지기 때문에, exec() sys call이 성공한 경우에는 반환하지 않고, 실패시에만 -1을 return 한다.
++ system() 함수를 사용해 exec() 함수를 쉽게 이용할 수 있다. [예제 링크](https://github.com/woorimlee/study_linux_prog/tree/master/chap9) 링크의 system_func.c와 system_implement.c를 참고하면 됩니다.
 
 ### Terminating a process
 + exit() 함수를 호출하면 kernel이 프로세스를 terminate한다. 이 함수를 호출하면, 호출한 프로세스에는 리턴할 곳이 없고, 부모 프로세스에 exit() 값을 리턴한다. 
 + main() 함수의 return도 결국에는 exit()를 호출하는데 이 모든 과정은 C start-up routine에 의해 이루어진다.
 
 ### SIGCHLD 
-+ 
++ Process가 종료될 때(terminates) 커널은 SIGCHLD를(Signal)  종료되는 프로세스의 부모 프로세스에게 보낸다. 기본적으로 이 신호는 무시되지만, 원하는 경우 시그널 핸들링을 통해 처리가 가능하다.
++ 부모에게 날라가는 SIGCHLD는 부모가 wait() 함수를 호출해서 수신할 수 있다. 이 함수는 종료된 child process의 pid 값을 리턴한다(대신 실패시 -1을 리턴). 또한, 블록킹 형태로 동작하기 때문에 자식이 종료되야 wait 함수가 끝난다. [더 자세한 정보](https://github.com/woorimlee/study    _linux_prog/tree/master/chap9)
+
+
