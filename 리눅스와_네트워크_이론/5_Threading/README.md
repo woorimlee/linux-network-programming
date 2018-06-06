@@ -18,5 +18,5 @@
 
 ### Thread 프로그래밍 
 1. Pthread 사용법 소개 --> 작성중
-2. [pthread 간단한 사용 예제](https://github.com/woorimlee/linux-network-programming/tree/mas    ter/API_study/thread)
+2. [pthread 간단한 사용 예제](https://github.com/woorimlee/linux-network-programming/tree/master/API_study/thread)
 
