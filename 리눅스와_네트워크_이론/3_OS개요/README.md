@@ -7,6 +7,9 @@
 ### Threads
 : 프로세스 내에서 프로세스가 동작하게하는 single 혹은 multiple의 unit이다(이 말은, 기본적으로 한 프로세스에는 최소한 하나의 스레드가 존재한다는 것이고, 이 스레드를 Main thread라 부른다). Executing code and maintaining the process' running state의 역할을 수행한다.
 
+  
+[더 자세한 정보](https://blog.naver.com/and_lamyland/221182893855)
+
 ### Process hierarchy
 : 각 프로세스는 PID(Process ID)라는 unique positive integer 값이 설정된다. 리눅스에서는 프로세스들이 'Process Tree'라는 계층 구조를 형성한다. 이는 첫 번째 프로세스(Init process)에서부터 트리모양으로 쭉쭉 프로세스들이 확장되기 때문이다. 
 
