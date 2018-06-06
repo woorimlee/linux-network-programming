@@ -35,6 +35,6 @@
 
 ### SIGCHLD 
 + Process가 종료될 때(terminates) 커널은 SIGCHLD를(Signal)  종료되는 프로세스의 부모 프로세스에게 보낸다. 기본적으로 이 신호는 무시되지만, 원하는 경우 시그널 핸들링을 통해 처리가 가능하다.
-+ 부모에게 날라가는 SIGCHLD는 부모가 wait() 함수를 호출해서 수신할 수 있다. 이 함수는 종료된 child process의 pid 값을 리턴한다(대신 실패시 -1을 리턴). 또한, 블록킹 형태로 동작하기 때문에 자식이 종료되야 wait 함수가 끝난다. [더 자세한 정보](https://github.com/woorimlee/study    _linux_prog/tree/master/chap9)
++ 부모에게 날라가는 SIGCHLD는 부모가 wait() 함수를 호출해서 수신할 수 있다. 이 함수는 종료된 child process의 pid 값을 리턴한다(대신 실패시 -1을 리턴). 또한, 블록킹 형태로 동작하기 때문에 자식이 종료되야 wait 함수가 끝난다. [더 자세한 정보](https://github.com/woorimlee/study_linux_prog/tree/master/chap9)
 
 
