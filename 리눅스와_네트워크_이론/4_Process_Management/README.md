@@ -14,7 +14,9 @@
 + 만약 자식 프로세스가 종료되었지만 부모 프로세스에 의해 종료 상태를 체크 & 마무리 작업이 이뤄지지 않는다면, 종료는 했지만 리소스가 남아있기 때문에 좀비 프로세스라고 부릅니다.
 + 만약 부모 프로세스가 자식 프로세스보다 먼저 종료되면 자식 프로세스는 고아 프로세스가 됩니다. 이 경우 자식 프로세스의 새 부모 프로세스가 init process가 되고, init process가 알아서 고아였던 자식 프로세스를 종료해줍니다.
 
-### Running a new process
+### fork() system call에 대한 정보 및 예제 파일 [링크](https://github.com/woorimlee/study_linux_prog/tree/master/chap9)
+
+### Exec(). Running a new process
 + The exec family of calls를 통해 해당 함수를 호출한 프로세스는 새로운 프로그램을 실행하는 프로세스가 된다.
 + 이전의 address space 등을 새로 갈아버리면서 새로운 프로세스가 동작하게 되는데, 대치되는 개념이지 새로 만들어지는 개념이 아닙니다. 
 + 새로운 프로그램으로 대치되기 때문에 이전에 실행되던 프로세스의 원본 프로그램의 나머지 시퀀스는 더 이상 동작하지 않습니다.
@@ -25,3 +27,10 @@
   4. 대부분의 스레드나 process 값들 역시 사라진다.
   5. 열린 파일 목록 등도 사라지고, 프로세스 address space에 올라가 있는 것들 역시 사라진다.
 + 기존의 프로그램이 없어지기 때문에 exec() 함수 호출 후 return 할 위치가 없어지기 때문에, exec() sys call이 성공한 경우에는 반환하지 않고, 실패시에만 -1을 return 한다.
+
+### Terminating a process
++ exit() 함수를 호출하면 kernel이 프로세스를 terminate한다. 이 함수를 호출하면, 호출한 프로세스에는 리턴할 곳이 없고, 부모 프로세스에 exit() 값을 리턴한다. 
++ main() 함수의 return도 결국에는 exit()를 호출하는데 이 모든 과정은 C start-up routine에 의해 이루어진다.
+
+### SIGCHLD 
++ 
