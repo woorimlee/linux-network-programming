@@ -37,7 +37,8 @@ int main (int argc, char *argv[]) {
     printf("ip : %s\n", inet_ntoa(addr));
     bzero(&web_Client, sizeof(web_Client));
     web_Client.sin_family = AF_INET;
-    web_Client.sin_addr.s_addr = inet_addr(inet_ntoa(addr));
+    web_Client.sin_addr.s_addr = *(u_long *)host ->h_addr_list[0];
+    //web_Client.sin_addr.s_addr = inet_addr(inet_ntoa(addr));
     web_Client.sin_port = htons(port);
     
     if(connect(sock, (struct sockaddr *)&web_Client, sizeof(web_Client)) == -1) {
